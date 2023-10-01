@@ -1,0 +1,28 @@
+# Import necessary libraries
+import nltk
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
+# Download NLTK data if not already installed
+nltk.download('vader_lexicon')
+
+# Initialize the SentimentIntensityAnalyzer
+sia = SentimentIntensityAnalyzer()
+
+# Sample text for sentiment analysis
+text = "I love this product! It's amazing."
+
+# Analyze sentiment
+sentiment_scores = sia.polarity_scores(text)
+
+# Determine sentiment based on the scores
+if sentiment_scores['compound'] >= 0.05:
+    sentiment = 'Positive'
+elif sentiment_scores['compound'] <= -0.05:
+    sentiment = 'Negative'
+else:
+    sentiment = 'Neutral'
+
+# Print the sentiment analysis result
+print("Text:", text)
+print("Sentiment:", sentiment)
+print("Sentiment Scores:", sentiment_scores)
